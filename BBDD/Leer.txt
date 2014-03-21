@@ -1,0 +1,5 @@
+- Tiene la tabla perfil rellena con Administrador, Profesor y Alumno
+- Está añadido el usuario Administrador prinicpal para poder entrar y
+  empezar a utilizar la aplicación:
+		- Usuario: 00000000A
+		- Pass: admin

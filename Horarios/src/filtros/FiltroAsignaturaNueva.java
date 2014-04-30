@@ -13,9 +13,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import modelo.Persona;
 import utils.Validador;
 
 /**
@@ -44,9 +42,6 @@ public class FiltroAsignaturaNueva implements Filter {
 		System.out.println("Entra en el filtro de nueva asignatura");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		
-		HttpSession session = ((HttpServletRequest)request).getSession();
-		Persona personaActiva = (Persona) session.getAttribute("persona");
 		
 		Map<String, String> errores = new HashMap<String, String>();
 		String nombre = req.getParameter("nombre");

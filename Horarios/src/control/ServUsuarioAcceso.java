@@ -1,7 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +15,6 @@ import utils.Validador;
 import utils.WebUtil;
 
 import modelo.GestorBD;
-import modelo.Perfil;
 import modelo.Persona;
 
 /**

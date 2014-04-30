@@ -1,57 +1,32 @@
 package base_Datos;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import modelo.Asignatura;
 import modelo.Curso;
-import modelo.GestorBD;
-import modelo.Persona;
 
 import com.mysql.jdbc.Connection;
 
 public class CursoDAO {
 	private Connection con;
     private PrintWriter out;
-    private FileOutputStream fos;
-    private ObjectOutputStream oos;
  // Para poder añadir el nombre de la persona que ha realizado las operaciones
     private String strUsuario; 
     
-	public CursoDAO(){
-		this.conexion();
+	public CursoDAO(Connection con, PrintWriter out){
+		this.con = con;
+		this.out = out;
 		strUsuario = "";
 	}
 	
-	public CursoDAO(String usuario){
-		this.conexion();
+	public CursoDAO(Connection con, PrintWriter out, String usuario){
+		this.con = con;
+		this.out = out;
 		strUsuario = usuario;
 	}
-	
-	private void conexion() {
-    	try {
-			con =  (Connection) ConnectionFactory.getInstance().getConnection();
-			File carpeta = new File(GestorBD.NOMBRE_CARPETA_LOG);
-			if (!carpeta.isDirectory()) {
-				if (carpeta.mkdirs()) {
-					System.out.println("Directorio " + carpeta.toString() + " creado correctamente.");
-				}
-			}
-			out=new PrintWriter(new FileWriter(carpeta + "/" + GestorBD.NOMBRE_FICHERO_LOG,true));//
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
 	
 	public Curso buscarCurso (int idCurso) {
     	Curso curso = null;

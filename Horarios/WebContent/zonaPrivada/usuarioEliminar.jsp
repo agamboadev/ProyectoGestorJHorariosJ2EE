@@ -28,7 +28,7 @@
 						</tr>
 						<tr>
 							<td><input type="submit" name="eliminar" value="Eliminar" /></td>
-							<td><input type="button" name="cancelar" value="Cancelar" onClick="location.href='ServUsuariosLista?op=${param.perfilLista }';" /></td>
+							<td><input type="button" name="cancelar" value="Cancelar" onclick="location.href='ServUsuariosLista?op=${param.perfilLista }';" /></td>
 						</tr>
 					</table>
 					<input type="hidden" name="perfilLista" value="${param.perfilLista }" />

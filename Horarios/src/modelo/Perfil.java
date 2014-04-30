@@ -1,10 +1,6 @@
 package modelo;
 
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.util.Vector;
-
-import javax.servlet.RequestDispatcher;
 
 public class Perfil implements Serializable {
 	private static final long serialVersionUID = 1L;

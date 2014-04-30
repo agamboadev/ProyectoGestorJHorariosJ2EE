@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -37,8 +36,8 @@ public class FiltroUsuarioAcceso implements Filter {
 		String pass = req.getParameter("pass");
 
 		
-		boolean dniEscrito = Validador.validarObligatorio(errores, "dni", dni, true);
-		boolean passEscrito = Validador.validarObligatorio(errores, "pass", pass, true);
+		Validador.validarObligatorio(errores, "dni", dni, true);
+		Validador.validarObligatorio(errores, "pass", pass, true);
 
 		if (!errores.isEmpty()) {
 			req.setAttribute("errores", errores);

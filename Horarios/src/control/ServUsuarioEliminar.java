@@ -1,19 +1,16 @@
 package control;
 
 import java.io.IOException;
-import java.util.Vector;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import utils.ServletUtil;
 
 import modelo.GestorBD;
-import modelo.Perfil;
 import modelo.Persona;
 
 /**
@@ -55,7 +52,6 @@ public class ServUsuarioEliminar extends HttpServlet {
 			eliminarDni = request.getParameter("eliminarDni");
 			
 			GestorBD gestorBD = new GestorBD(descripcionUsuario);	
-			String ruta = getServletContext().getContextPath();
 			Persona persona = gestorBD.buscarPersona(eliminarDni);
 			gestorBD.desconectar();
 			

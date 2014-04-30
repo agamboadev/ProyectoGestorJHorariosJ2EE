@@ -1,55 +1,20 @@
 package base_Datos;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import modelo.GestorBD;
 import modelo.Perfil;
 
 import com.mysql.jdbc.Connection;
 
 public class PerfilDAO {
 	private Connection con;
-	private boolean conectado=false;
-    private int intentos=0;
-    private PrintWriter out;
-    private FileOutputStream fos;
-    private ObjectOutputStream oos;
-    private String strUsuario;
     
-    public PerfilDAO(){
-    	this.conexion();
-    	strUsuario = "";
-	}
-    
-    public PerfilDAO(String usuario){
-    	this.conexion();
-    	strUsuario = usuario;
-	}
-    
-    private void conexion () {
-    	try {
-			con =  (Connection) ConnectionFactory.getInstance().getConnection();
-			File carpeta = new File(GestorBD.NOMBRE_CARPETA_LOG);
-			if (!carpeta.isDirectory()) {
-				if (carpeta.mkdirs()) {
-					System.out.println("Directorio " + carpeta.toString() + " creado correctamente.");
-				}
-			}
-			out=new PrintWriter(new FileWriter(carpeta + "/" + GestorBD.NOMBRE_FICHERO_LOG,true));//
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+    public PerfilDAO(Connection con){
+    	//this.conexion();
+    	this.con = con;
 	}
 
     public Perfil buscarPerfil (int idPerfil) {
@@ -76,7 +41,6 @@ public class PerfilDAO {
     }
     
     public String nombrePerfil (int idPerfil) {
-    	Perfil perfil = null;
     	String nombPerfil = "";
     	System.out.println("Datos que se le pasan al metodo nombrePerfil: ");
 		System.out.println("-- idPerfil: " + idPerfil);

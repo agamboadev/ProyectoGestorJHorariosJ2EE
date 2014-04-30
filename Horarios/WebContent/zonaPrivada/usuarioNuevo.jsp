@@ -88,7 +88,7 @@
 						<tr>
 							<td>Perfil:* </td>
 							<td>
-								<select id="selPerfil" name="selPerfil" onChange="comprobarSiEsAlumno()">
+								<select id="selPerfil" name="selPerfil" onchange="comprobarSiEsAlumno()">
 									<c:forEach var="perfil" items="${perfiles }">
 										<c:if test="${(persona.idPerfil != 2) || (perfil.idPerfil == 3) }">
 											<option value="${perfil.idPerfil }">${perfil.nombre }</option>

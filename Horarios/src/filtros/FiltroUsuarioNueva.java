@@ -58,10 +58,10 @@ public class FiltroUsuarioNueva implements Filter {
 		String passRepetido = req.getParameter("passRepetido");
 		String nombre = req.getParameter("nombre");
 		String apellido1  = request.getParameter("apellido1");
-		String apellido2  = request.getParameter("apellido2");
-		String telefono  = request.getParameter("telefono");
-		String movil  = request.getParameter("movil");
-		String email  = request.getParameter("email");
+		//String apellido2  = request.getParameter("apellido2");
+		//String telefono  = request.getParameter("telefono");
+		//String movil  = request.getParameter("movil");
+		//String email  = request.getParameter("email");
 
 		
 		Validador.validarDNI(errores, "dni", dni, true);

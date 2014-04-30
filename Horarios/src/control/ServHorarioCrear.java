@@ -1,8 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -16,9 +14,7 @@ import javax.servlet.http.HttpSession;
 import modelo.Asignatura;
 import modelo.GestorBD;
 import modelo.Horario;
-import modelo.Horario_Asig;
 import modelo.Persona;
-import modelo.Rango_horas;
 import utils.ServletUtil;
 
 public class ServHorarioCrear extends HttpServlet {

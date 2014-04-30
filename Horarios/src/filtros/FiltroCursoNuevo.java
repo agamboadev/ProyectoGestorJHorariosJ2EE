@@ -3,7 +3,6 @@ package filtros;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,12 +13,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import modelo.Curso;
-import modelo.GestorBD;
-import modelo.Perfil;
-import modelo.Persona;
 import utils.Validador;
 
 /**
@@ -48,10 +42,7 @@ public class FiltroCursoNuevo implements Filter {
 		System.out.println("Entra en el filtro de nuevo curso");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		
-		HttpSession session = ((HttpServletRequest)request).getSession();
-		Persona personaActiva = (Persona) session.getAttribute("persona");
-		
+			
 		Map<String, String> errores = new HashMap<String, String>();
 		String nombre = req.getParameter("nombre");
 		String durHoras = req.getParameter("durHoras");

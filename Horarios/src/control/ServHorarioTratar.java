@@ -44,7 +44,6 @@ public class ServHorarioTratar extends HttpServlet {
 		int numPorciones = Integer.parseInt(request.getParameter("numPorciones"));
 		String strTabla = request.getParameter("strTabla");
 		
-		int longitudCadena = strTabla.length();
 		String separadorCelda = "&";
 		String separadorFilaColumna = "$";
 		String separadorTexto = "@";

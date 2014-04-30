@@ -44,40 +44,42 @@
 						</tr>
 						<c:forEach var="asignatura" items="${vAsignaturas }">
 							<tr>
-								<form method="post" action="${pageContext.request.contextPath }/ServAsignaturaModif">
-									<table>
-										<tr>
-											<td>Nombre: </td>
-											<td><input type="text" name="asignaturaNombre"  value="${asignatura.nombre }"/></td>
-											<td><input type="submit" name="btnModifAsignatura" value="Modificar" /></td>
-										</tr>
-										<tr>
-											<td>Duración: </td>
-											<td><input type="text" name="asignaturaDurHoras"  value="${asignatura.durHoras }"/> horas</td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>Profesor: </td>
-											<td>
-												<select name="selProfesor">
-													<c:forEach var="profesor" items="${vProfesores }">
-														<c:choose>
-															<c:when test="${profesor.idPersona == asignatura.idProfesor }">
-																<option value="${profesor.idPersona }" selected="selected">${profesor.nombre } ${profesor.apellido1 } ${profesor.apellido2 }</option>
-															</c:when>
-															<c:otherwise>
-																<option value="${profesor.idPersona }">${profesor.nombre } ${profesor.apellido1 } ${profesor.apellido2 }</option>
-															</c:otherwise>
-														</c:choose>																												
-													</c:forEach>																		
-												</select>
-											</td>
-											<td></td>
-										</tr>
-									</table>
-									<input type="hidden" name="idAsignatura" value="${asignatura.idAsignatura }" />
-									<input type="hidden" name="idCurso" value="${curso.idCurso }" />
-								</form>
+								<td>
+									<form method="post" action="${pageContext.request.contextPath }/ServAsignaturaModif">
+										<table>
+											<tr>
+												<td>Nombre: </td>
+												<td><input type="text" name="asignaturaNombre"  value="${asignatura.nombre }"/></td>
+												<td><input type="submit" name="btnModifAsignatura" value="Modificar" /></td>
+											</tr>
+											<tr>
+												<td>Duración: </td>
+												<td><input type="text" name="asignaturaDurHoras"  value="${asignatura.durHoras }"/> horas</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Profesor: </td>
+												<td>
+													<select name="selProfesor">
+														<c:forEach var="profesor" items="${vProfesores }">
+															<c:choose>
+																<c:when test="${profesor.idPersona == asignatura.idProfesor }">
+																	<option value="${profesor.idPersona }" selected="selected">${profesor.nombre } ${profesor.apellido1 } ${profesor.apellido2 }</option>
+																</c:when>
+																<c:otherwise>
+																	<option value="${profesor.idPersona }">${profesor.nombre } ${profesor.apellido1 } ${profesor.apellido2 }</option>
+																</c:otherwise>
+															</c:choose>																												
+														</c:forEach>																		
+													</select>
+												</td>
+												<td></td>
+											</tr>
+										</table>
+										<input type="hidden" name="idAsignatura" value="${asignatura.idAsignatura }" />
+										<input type="hidden" name="idCurso" value="${curso.idCurso }" />
+									</form>
+								</td>
 							</tr>							
 						</c:forEach>						
 					</table>					

@@ -1,8 +1,16 @@
 package modelo;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Vector;
 
+import com.mysql.jdbc.Connection;
+
 import base_Datos.AsignaturaDAO;
+import base_Datos.ConnectionFactory;
 import base_Datos.CursoDAO;
 import base_Datos.HorarioDAO;
 import base_Datos.Horario_AsigDAO;
@@ -29,26 +37,31 @@ public class GestorBD {
 	private Horario_AsigDAO horario_Asigdao;
 	private Persona_CursoDAO persona_cursodao;
 	
+	private Connection con;
+    private PrintWriter out;
+	
 	public GestorBD() {
-		personadao = new PersonaDAO();
-		perfildao = new PerfilDAO();
-		cursodao = new CursoDAO();
-		asignaturadao = new AsignaturaDAO();
-		rango_horasdao = new Rango_horasDAO();
-		horariodao = new HorarioDAO();
-		horario_Asigdao = new Horario_AsigDAO();
-		persona_cursodao = new Persona_CursoDAO();
+		this.conexion();
+		personadao = new PersonaDAO(con, out);
+		perfildao = new PerfilDAO(con);
+		cursodao = new CursoDAO(con , out);
+		asignaturadao = new AsignaturaDAO(con, out);
+		rango_horasdao = new Rango_horasDAO(con, out);
+		horariodao = new HorarioDAO(con, out);
+		horario_Asigdao = new Horario_AsigDAO(con, out);
+		persona_cursodao = new Persona_CursoDAO(con, out);
 	}
 	
 	public GestorBD(String usuario) {
-		personadao = new PersonaDAO(usuario);
-		perfildao = new PerfilDAO(usuario);
-		cursodao = new CursoDAO(usuario);
-		asignaturadao = new AsignaturaDAO(usuario);
-		rango_horasdao = new Rango_horasDAO(usuario);
-		horariodao = new HorarioDAO(usuario);
-		horario_Asigdao = new Horario_AsigDAO(usuario);
-		persona_cursodao = new Persona_CursoDAO(usuario);
+		this.conexion();
+		personadao = new PersonaDAO(con, out, usuario);
+		perfildao = new PerfilDAO(con);
+		cursodao = new CursoDAO(con, out, usuario);
+		asignaturadao = new AsignaturaDAO(con, out, usuario);
+		rango_horasdao = new Rango_horasDAO(con, out, usuario);
+		horariodao = new HorarioDAO(con, out, usuario);
+		horario_Asigdao = new Horario_AsigDAO(con, out, usuario);
+		persona_cursodao = new Persona_CursoDAO(con, out, usuario);
 	}
 	
 	// PERSONA
@@ -259,10 +272,35 @@ public class GestorBD {
 	public boolean eliminarPersona_Curso (int idPersona) {
 		return persona_cursodao.eliminarPersona_Curso(idPersona);
 	}
+	
+	// CONECTAR
+	private void conexion() {
+    	try {
+    		System.out.println("*** Conexión con la base de datos.");
+			con =  (Connection) ConnectionFactory.getInstance().getConnection();
+			File carpeta = new File(GestorBD.NOMBRE_CARPETA_LOG);
+			if (!carpeta.isDirectory()) {
+				if (carpeta.mkdirs()) {
+					System.out.println("Directorio " + carpeta.toString() + " creado correctamente.");
+				}
+			}
+			out=new PrintWriter(new FileWriter(carpeta + "/" + GestorBD.NOMBRE_FICHERO_LOG,true));//
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 		
 	// DESCONECTAR
 	
-	public void desconectar() {
-		personadao.desconectar();
+	public void desconectar(){
+		try {
+			System.out.println("*** Se desconecta conexión con la base de datos.");
+			con.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 }

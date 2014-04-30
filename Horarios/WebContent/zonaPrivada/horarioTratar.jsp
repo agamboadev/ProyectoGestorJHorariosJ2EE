@@ -111,7 +111,7 @@
 			var longitudElemStrTabla = elemStrTabla.length;
 			var longitudElemNuevo = elemNuevo.length;
 			
-			var strTablaFinal = "";
+			//var strTablaFinal = "";
 			var distinto = true;
 			if (strTabla != "") {
 				for (var i=0 ; i<longitudElemStrTabla ; i++) {

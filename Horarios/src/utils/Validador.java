@@ -1,17 +1,13 @@
 package utils;
 
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 
 public final class Validador {
 
 	private final static String VALOR_DNI_INCORRECTO = "Formato DNI incorrecto";
-	private final static String VALOR_NOMBRE_INCORRECTO = "Formato nombre incorrecto";
-	private final static String VALOR_APELLIDO1_INCORRECTO = "Formato primer apellido incorrecto";
+	//private final static String VALOR_NOMBRE_INCORRECTO = "Formato nombre incorrecto";
+	//private final static String VALOR_APELLIDO1_INCORRECTO = "Formato primer apellido incorrecto";
 	private final static String VALOR_PASS_REPETIDA_INCORRECTA = "Las contraseñas no coinciden";
 	private final static String VALOR_CLAVE_INCORRECTO = "Clave incorrecto";
 	private final static String VALOR_LONG_INCORRECTO = "Valor entero incorrecto";

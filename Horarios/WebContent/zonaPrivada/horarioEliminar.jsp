@@ -28,7 +28,7 @@
 						</tr>
 						<tr>
 							<td><input type="submit" name="eliminar" value="Eliminar" /></td>
-							<td><input type="button" name="cancelar" value="Cancelar" onClick="location.href='ServHorariosLista';" /></td>
+							<td><input type="button" name="cancelar" value="Cancelar" onclick="location.href='ServHorariosLista';" /></td>
 						</tr>
 					</table>
 				</form>        				

@@ -80,7 +80,7 @@
 						<tr>
 							<td>Perfil: *</td>
 							<td>
-								<select name="selPerfil" id="selPerfil" onChange="comprobarSiEsAlumno()">
+								<select name="selPerfil" id="selPerfil" onchange="comprobarSiEsAlumno()">
 									<c:forEach var="perfil" items="${perfiles }">
 										<c:choose>
 											<c:when test="${idPerfil == perfil.idPerfil }">
@@ -122,7 +122,7 @@
 						</tr>
 						<tr>
 							<td><input type="submit" name="modificar" value="Modificar" id="modificar" /></td>
-							<td><input type="button" name="cancelar" value="Cancelar" onClick="location.href='ServUsuariosLista?op=${param.perfilLista }';" /></td>
+							<td><input type="button" name="cancelar" value="Cancelar" onclick="location.href='ServUsuariosLista?op=${param.perfilLista }';" /></td>
 						</tr>		   				
 					</table>
 					<input type="hidden" name="perfilLista" value="${param.perfilLista }" />

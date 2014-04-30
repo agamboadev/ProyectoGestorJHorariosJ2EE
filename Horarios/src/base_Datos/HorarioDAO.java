@@ -1,10 +1,5 @@
 package base_Datos;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,48 +8,27 @@ import java.util.Vector;
 
 import utils.ServletUtil;
 
-import modelo.GestorBD;
 import modelo.Horario;
-import modelo.Persona;
-import modelo.Rango_horas;
 
 import com.mysql.jdbc.Connection;
 
 public class HorarioDAO {
 	private Connection con;
     private PrintWriter out;
-    private FileOutputStream fos;
-    private ObjectOutputStream oos;
-    private String ruta;
  // Para poder añadir el nombre de la persona que ha realizado las operaciones
     private String strUsuario; 
     
-    public HorarioDAO () {
-    	this.conexion();
+    public HorarioDAO (Connection con, PrintWriter out) {
+    	this.con = con;
+    	this.out = out;
     	strUsuario = "Desconocido";
     }
 
-    public HorarioDAO(String usuario){
+    public HorarioDAO(Connection con, PrintWriter out, String usuario){
     	strUsuario = usuario;
-    	this.conexion();
+    	this.con = con;
+    	this.out = out;
 	}
-    
-    private void conexion() {
-    	try {
-			con =  (Connection) ConnectionFactory.getInstance().getConnection();
-			File carpeta = new File(GestorBD.NOMBRE_CARPETA_LOG);
-			if (!carpeta.isDirectory()) {
-				if (carpeta.mkdirs()) {
-					System.out.println("Directorio " + carpeta.toString() + " creado correctamente.");
-				}
-			}
-			out=new PrintWriter(new FileWriter(carpeta + "/" + GestorBD.NOMBRE_FICHERO_LOG,true));//
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
     
     public Horario buscarHorario (int idHorario) {
     	Horario horario = null;

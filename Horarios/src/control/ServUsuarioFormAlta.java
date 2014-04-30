@@ -48,7 +48,6 @@ public class ServUsuarioFormAlta extends HttpServlet {
 		Persona personaActiva = (Persona) session.getAttribute("persona");
 	    
 		GestorBD gestorBD = new GestorBD(descripcionUsuario);	
-		String ruta = getServletContext().getContextPath();
 		Vector<Perfil> perfiles = gestorBD.listadoPerfiles();
 		Vector<Curso> vCursos;
 		if (personaActiva.getIdPerfil() == GestorBD.PROFESOR) {

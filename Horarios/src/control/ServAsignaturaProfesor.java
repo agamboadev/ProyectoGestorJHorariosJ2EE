@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.AsignaturaCurso;
-import modelo.Curso;
 import modelo.GestorBD;
 import modelo.Persona;
 import utils.WebUtil;
